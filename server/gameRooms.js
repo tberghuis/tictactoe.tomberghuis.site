@@ -47,9 +47,12 @@ const emitGameRoom = gameRoom => {
 
 const endGameRoom = gameRoomId => {
   const gameRoom = gameRooms[gameRoomId];
-  delete gameRooms[gameRoomId];
+
   sLobbyJoin.next(gameRoom.player1);
   sLobbyJoin.next(gameRoom.player2);
+
+  delete gameRooms[gameRoomId];
+
   io.to(gameRoom.player1).emit("s2c-game-exit");
   io.to(gameRoom.player2).emit("s2c-game-exit");
 };
