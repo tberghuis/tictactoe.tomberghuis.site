@@ -7,9 +7,6 @@
         <p>
           <v-btn class="mt-8" dark color="red" @click="loginGoogle">Login with Google</v-btn>
         </p>
-        <p>
-          Enable third party cookies if having trouble logging in. (will fix in future)
-        </p>
       </v-col>
     </v-row>
   </v-container>
