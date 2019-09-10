@@ -6,6 +6,8 @@ export default firebase;
 const firebaseConfig = {
   apiKey: "AIzaSyD3ML8a3mF7ogaFnCsHygUOOzSgAqAhS-E",
   authDomain: "tictactoe-b4558.firebaseapp.com",
+  // TODO get working
+  // authDomain: "tictactoe.tomberghuis.site",
   databaseURL: "https://tictactoe-b4558.firebaseio.com",
   projectId: "tictactoe-b4558",
   storageBucket: "",
