@@ -15,7 +15,8 @@ module.exports = { bsLobby, sLobbyJoin, sLobbyLeave };
 sLobbyJoin.subscribe({
   next: id => {
     if (bsLobby.value.indexOf(id) === -1) {
-      bsLobby.next([...bsLobby.value, id]);
+      const nextLobby = [...bsLobby.value, id];
+      bsLobby.next(nextLobby);
     }
   }
 });
@@ -33,7 +34,7 @@ sLobbyLeave.subscribe({
 
 bsLobby.subscribe({
   next: lobby => {
-    const lobbyUsers = lobby.map(id => users[id]);
+    const lobbyUsers = lobby.map(id => users[id]).filter(lu => lu !== null);
     lobby.forEach(lobbyId => {
       io.to(lobbyId).emit("lobby users", lobbyUsers);
     });

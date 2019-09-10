@@ -4,7 +4,7 @@ import { skip } from "rxjs/operators";
 import store from "@/store";
 
 export const socketHolder = { socket: null };
-// window.socketHolder = socketHolder;
+window.socketHolder = socketHolder;
 
 const socketUrl = process.env.VUE_APP_SOCKET_URL;
 
@@ -13,7 +13,8 @@ const socketConnect = async user => {
   socketHolder.socket = io(socketUrl, {
     query: { id_token }
   });
-  handleSocketEvents(socketHolder.socket);
+  // handleSocketEvents(socketHolder.socket);
+  handleSocketEvents();
 };
 
 const socketDisconnect = () => {
@@ -38,8 +39,12 @@ bsUser.pipe(skip(1)).subscribe({
   }
 });
 
-const handleSocketEvents = socket => {
+const handleSocketEvents = () => {
+  const { socket } = socketHolder;
+  console.log("TCL: socket", socket);
   socket.on("lobby users", function(lobbyUsers) {
+    console.log("TCL: lobbyUsers", lobbyUsers);
+
     const lus = lobbyUsers.filter(lu => lu.id !== socket.id);
     // TODO use mutation
     store.state.lobbyUsers = lus;

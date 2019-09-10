@@ -7,6 +7,6 @@ export default bsUser;
 firebase.auth().onAuthStateChanged(async user => {
   bsUser.next(user);
   // if (user) {
-  //   window.USER = user;
+    window.USER = user;
   // }
 });

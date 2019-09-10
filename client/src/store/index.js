@@ -24,4 +24,4 @@ const store = new Vuex.Store({
 
 export default store;
 
-// window.STORE = store;
+window.STORE = store;
